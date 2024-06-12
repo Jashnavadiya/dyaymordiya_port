@@ -84,7 +84,7 @@ h6 {
   --heading-color: #ffffff;
   color: var(--default-color);
   background-color: var(--background-color);
-  padding: 20px 0;
+  padding: 5px 0;
   transition: all 0.5s;
   z-index: 997;
 }
@@ -94,8 +94,8 @@ h6 {
 }
 
 .header .logo img {
-  max-height: 32px;
-  margin-right: 8px;
+  max-height: 70px;
+  margin-left: 55%;
 }
 
 .header .logo h1 {
@@ -609,7 +609,7 @@ section,
   position: absolute;
   inset: 0;
   display: block;
-  width: 100%;
+  margin: auto;
   height: 100%;
   object-fit: cover;
   z-index: 1;
@@ -1625,4 +1625,10 @@ section,
 .msg-pop-show{
   visibility: visible;
   transform: translateY(90px);
+}
+.sitename1 img{
+  width: 100%;
+}
+.sitename1{
+  width: 100%;
 }
