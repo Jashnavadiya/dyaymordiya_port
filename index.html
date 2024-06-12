@@ -968,16 +968,16 @@
 
     form.addEventListener('submit', e => {
       e.preventDefault()
-      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+      fetch(scriptURL, { method: 'POST', body: new FormData(form) },form.reset())
         .then(response => {
           console.log('done');
           document.querySelector('.msg-pop').innerHTML="Thanks For reaching us we will reach you soon!"
           document.querySelector('.msg-pop').classList.add('msg-pop-show')
+          
 
           if (document.querySelector('.msg-pop').classList.contains('msg-pop-show')) { 
             setTimeout(() =>{
               document.querySelector('.msg-pop').classList.remove('msg-pop-show');
-              form.reset()
             }, 2500) 
           }
         })
