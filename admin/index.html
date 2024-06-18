@@ -10,11 +10,11 @@
 <div class="main-form">
     
     <form action="" id="helio">
-        <input type="text" placeholder="Enter Image Titiel" required>
-        <input type="text" placeholder="enter image desc" required>
-        <input type="text" placeholder="enter image url" required>
-        <select name="" id="" required>
-            <option value="" hidden >select cate</option>
+        <input type="text" id="title" placeholder="Enter Image Title" required>
+        <input type="text" id="desc" placeholder="enter image desc" required>
+        <input type="text" id="url" placeholder="enter image url" required>
+        <select name="" id="cate" required>
+            <option value="" hidden>select cate</option>
             <option value="app">card</option>
             <option value="product">logo</option>
             <option value="branding">poster</option>
@@ -23,9 +23,42 @@
         <input type="submit" value="add">
     </form>
     <div class="main-show-area">
-        
+       
     </div>
 </div>
 </body>
 <script src="./js/admin.js"></script>
+<script>
+    document.getElementById('helio').addEventListener('submit', async function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        const title = document.getElementById('title').value;
+        const desc = document.getElementById('desc').value;
+        const url = document.getElementById('url').value;
+        const cate = document.getElementById('cate').value;
+
+        try {
+            const response = await fetch('http://localhost:5500/upload-by-link', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ title, desc, url, cate })
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const result = await response.json();
+            console.log('Success:', result);
+
+            // Optionally, update the UI or reset the form
+            document.getElementById('helio').reset();
+
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    });
+</script>
 </html>
