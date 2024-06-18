@@ -15,6 +15,7 @@ mongoose.connect(process.env.MONGO_URL + "/imagesDB")
     .then(() => console.log("Mongo Connected"))
     .catch(err => console.error("Mongo connection error:", err));
 console.log(process.env.MONGO_URL)
+
 app.post("/upload-by-link", async (req, res) => {
     try {
         const { title, desc, url, cate } = req.body;
@@ -46,6 +47,25 @@ app.post("/delete-img-link", async (req, res) => {
   } 
 });
 
+app.post("/validate", async (req, res) => {
+  try {
+    const {username,pass} = req.body;
+    // console.log(url);
+    // const deleteResult = await Image.deleteOne({ url: url });
+
+    if (username == process.env.PROF_USR && pass == process.env.PROF_PASS) {
+      // console.log('Image with URL ${url} deleted successfully');
+      res.status(200).json({ message: 'Success' });
+    } else {
+      // console.log('Image not found');
+      res.status(404).json({ message: 'Failed' });
+    }
+  } catch (error) {
+    console.error('Error validating:', error);
+    res.status(500).json({ message: 'Server error' });
+  } 
+});
+
 app.get('/get-images', async (req, res) => {
     try {
       const images = await Image.find(); // Fetch all images from the database
@@ -58,9 +78,10 @@ app.get('/get-images', async (req, res) => {
     }
   });
 
-  app.get('/login', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', './login.html')); // Replace 'index.html' with your actual file name
-  });
+  // app.get('/login', (req, res) => {
+  //   res.sendFile(path.join(__dirname, 'public', './login.html')); // Replace 'index.html' with your actual file name
+  // });
+
 
 const PORT = 5500;
 app.listen(PORT, () => {

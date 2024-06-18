@@ -50,12 +50,38 @@
       </div>
 </body>
 <script>
-  document.querySelector('.main-login').addEventListener('submit',(e)=>{
-    e.preventDefault();
-    if(document.getElementById('un').value=="admin"&&document.getElementById('pass').value=="admin"){
-      sessionStorage.setItem("isLoginnnn",true)
-      window.location.href="./index.html"
-    }
+  document.querySelector('.main-login').addEventListener('submit',async function(event) {
+    event.preventDefault();
+    // if(document.getElementById('un').value=="admin"&&document.getElementById('pass').value=="admin"){
+    //   sessionStorage.setItem("isLoginnnn",true)
+    //   window.location.href="./index.html"
+    // }
+    let username = document.getElementById('un').value;
+    let pass = document.getElementById('pass').value;
+    try {
+            const response = await fetch('https://dyaymordiya.onrender.com/validate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username,pass })
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const result = await response.json();
+            console.log('Login Status:', result);
+
+            // Optionally, update the UI or reset the form
+            // document.getElementById('helio').reset();
+            sessionStorage.setItem("isLoginnnn",true)
+            window.location.href="./index.html"
+
+        } catch (error) {
+            console.error('Login Error:', error);
+        }
   })
 </script>
 </html>
