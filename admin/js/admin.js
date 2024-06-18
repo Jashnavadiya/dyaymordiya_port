@@ -7,7 +7,7 @@ if(!hi){
 
 window.onload = async () => {
     try {
-        const response = await fetch('https://dyaymordiya-port.pages.dev/get-images'); // Assuming your backend is on the same domain
+        const response = await fetch('https://dyaymordiya.onrender.com/get-images'); // Assuming your backend is on the same domain
         const imageUrls = await response.json();
 
         // Use the imageUrls to display the images on your webpage
@@ -38,7 +38,7 @@ window.onload = async () => {
                 
 
                 try {
-                    const response = await fetch('https://dyaymordiya-port.pages.dev/delete-img-link', {
+                    const response = await fetch('https://dyaymordiya.onrender.com/delete-img-link', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
