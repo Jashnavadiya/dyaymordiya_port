@@ -210,6 +210,7 @@ var applyClasses = function applyClasses(el, top) {
     fireEvent('aos:out', node);
 
     if (el.options.id) {
+      
       fireEvent('aos:in:' + el.options.id, node);
     }
 
