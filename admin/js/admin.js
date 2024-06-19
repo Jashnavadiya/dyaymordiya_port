@@ -21,6 +21,7 @@ window.onload = async () => {
             <div class="portfolio-info">
             <h4>Title: ${imageUrl.title}</h4>
             <p>Description: ${imageUrl.desc}</p>
+            
             <img src="${imageUrl.url}" class="img-fluid " style="width:200px;" alt="">
                   <a href="assets/img/portfolio/app-1.jpg" title="App 1" data-gallery="portfolio-gallery-app"
                     class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
@@ -28,9 +29,24 @@ window.onload = async () => {
                       class="bi bi-link-45deg"></i></a>
                 </div>
               </div>`;
+              let cate=document.createElement('span');
+              if(imageUrl.cate=="app"){
+                cate.innerHTML="Category: Card" 
+              }
+              else if(imageUrl.cate=="product"){
+                cate.innerHTML="Category: logo" 
+              }
+              else if(imageUrl.cate=="branding"){
+                cate.innerHTML="Category: poster" 
+              }
+              else if(imageUrl.cate=="books"){
+                cate.innerHTML="Category: graphic" 
+              }
             let del_btn = document.createElement('button');
             del_btn.innerHTML = "Delete"
-            imageContainer.append(image, del_btn);
+            let hr=document.createElement('hr')
+            let br=document.createElement('br')
+            imageContainer.append(image, cate,br,del_btn,hr);
             del_btn.addEventListener('click', async() => {
 
                
