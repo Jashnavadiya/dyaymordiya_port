@@ -1637,6 +1637,37 @@ max-height:100%
 .sitename1{
   width: 100%;
 }
+.moreWorks{
+  display: flex;justify-content: right;
+  font-size:25px
+}
+.moreWorks a{
+  color: #bababa;
+}
+.moreWorks a p i{
+  margin-right: 7px;
+}
+.moreWorks a p:hover  i{
+  margin-right: 3px;
+  margin-left: 4px;
+}
+.moreWorks a p{
+  position: relative;
+}
+.moreWorks a p::before{
+    content: "";
+    position: absolute;
+    width: 0%;
+    left: 0;
+    right: 0;
+    background-color: #bababa;
+    height: 1px;
+    bottom: 0;
+    transition: all 0.5s;
+}
+.moreWorks a p:hover::before{
+width: 90%;
+}
 .shown{
   visibility: hidden;
 }
