@@ -14,7 +14,6 @@ app.use(cors());
 mongoose.connect(process.env.MONGO_URL + "/imagesDB")
     .then(() => console.log("Mongo Connected"))
     .catch(err => console.error("Mongo connection error:", err));
-console.log(process.env.MONGO_URL)
 
 app.post("/upload-by-link", async (req, res) => {
     try {
